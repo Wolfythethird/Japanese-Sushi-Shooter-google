@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Showdown: Wasabi Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Import Three.js and Socket.io -->
+    <script src="https://cloudflare.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+    <!-- MAIN MENU SCREEN -->
+    <div id="main-menu" class="screen">
+        <h1 class="logo">スシ SHOWDOWN</h1>
+        <div class="menu-box">
+            <input type="text" id="username-input" placeholder="Enter Sushi Name..." value="MaguroWarrior">
+            
+            <label for="map-select">Select Region Map:</label>
+            <select id="map-select">
+                <option value="Kyoto_Courtyard">Kyoto Courtyard (Close Quarters)</option>
+                <option value="Tokyo_Neon">Tokyo Neon Arcade (Large Map)</option>
+            </select>
+
+            <button id="btn-play" class="btn primary">ENTER BATTLE</button>
+            <button id="btn-shop" class="btn secondary">SKIN SHOP (O-MISE)</button>
+        </div>
+    </div>
+
+    <!-- SKIN SHOP SCREEN -->
+    <div id="shop-menu" class="screen hidden">
+        <h2>SUSHI MARKET</h2>
+        <div class="shop-grid">
+            <div class="shop-item active" data-skin="maguro">
+                <div class="skin-preview red"></div>
+                <h3>Maguro (Tuna)</h3>
+                <p>Standard Ronin</p>
+                <button class="btn select-skin">Equipped</button>
+            </div>
+            <div class="shop-item" data-skin="sake">
+                <div class="skin-preview orange"></div>
+                <h3>Sake (Salmon)</h3>
+                <p>Elite Shinobi</p>
+                <button class="btn select-skin">Select</button>
+            </div>
+            <div class="shop-item" data-skin="tamago">
+                <div class="skin-preview yellow"></div>
+                <h3>Tamago (Egg)</h3>
+                <p>Heavy Shogun</p>
+                <button class="btn select-skin">Select</button>
+            </div>
+        </div>
+        <button id="btn-shop-close" class="btn secondary">BACK TO MENU</button>
+    </div>
+
+    <!-- HUD (GAME OVERLAY) -->
+    <div id="hud" class="hidden">
+        <div class="hud-top">
+            <div class="health-bar-container">
+                <div class="hud-label">HEALTH</div>
+                <div id="hp-fill" class="bar-fill health"></div>
+            </div>
+            <div id="player-score">Sushi Count: 0</div>
+        </div>
+        <div class="crosshair">+</div>
+        <div class="hud-bottom">
+            <div class="ammo-counter">
+                <span id="ammo-current">30</span>/<span id="ammo-max">30</span>
+                <div id="reload-indicator" class="hidden">RELOADING...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
